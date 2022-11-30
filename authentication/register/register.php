@@ -1,13 +1,13 @@
 <?php
-include 'dat/dbh.php';
-include 'index.php';
+include '../dat/dbh.php';
 
 $first = $_POST['name'];
 $last = $_POST['surname'];
-$user = $_POST['username'];
-$passw = $_POST['password'];
+$user = sha1($_POST['username']);
+$passw = sha1(sha1($_POST['password']));
+$role = 'user';
 
-$insert = "INSERT INTO logins (loginName, loginSurname, loginUsername, loginPassw) VALUES ('$first', '$last', '$user', '$passw')";
+$insert = "INSERT INTO logins (loginName, loginSurname, loginUsername, loginPassw, rName) VALUES ('$first', '$last', '$user', '$passw', '$role');";
 mysqli_query($connect, $insert);
 
-header("Location: ../index.php");
+header('Location: ' . '../login/index.php');

@@ -1,38 +1,22 @@
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
-CREATE SCHEMA IF NOT EXISTS `login` DEFAULT CHARACTER SET utf8 ;
-USE `login` ;
+CREATE DATABASE login DEFAULT CHARACTER SET utf8 ;
 
-DROP TABLE IF EXISTS `login`.`role` ;
+CREATE TABLE IF NOT EXISTS logins (
+  idlogins INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  loginName VARCHAR(45) NOT NULL,
+  loginSurname VARCHAR(45) NOT NULL,
+  loginUsername VARCHAR(45) NOT NULL,
+  loginPassw VARCHAR(45) NOT NULL,
+  rName VARCHAR(45) NOT NULL,
+  UNIQUE INDEX loginUsername_UNIQUE(loginUsername)
+);
 
-CREATE TABLE IF NOT EXISTS `login`.`role` (
-  `idrole` INT NOT NULL,
-  `rName` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idrole`))
-ENGINE = InnoDB;
-
-DROP TABLE IF EXISTS `login`.`logins` ;
-
-CREATE TABLE IF NOT EXISTS `login`.`logins` (
-  `idlogins` INT NOT NULL,
-  `loginName` VARCHAR(45) NOT NULL,
-  `loginSurname` VARCHAR(45) NOT NULL,
-  `loginPassw` VARCHAR(45) NOT NULL,
-  `loginUsername` VARCHAR(45) NOT NULL,
-  `role_idrole` INT NOT NULL,
-  PRIMARY KEY (`idlogins`, `role_idrole`),
-  UNIQUE INDEX `loginUsername_UNIQUE` (`loginUsername` ASC),
-  INDEX `fk_logins_role_idx` (`role_idrole` ASC),
-  CONSTRAINT `fk_logins_role`
-    FOREIGN KEY (`role_idrole`)
-    REFERENCES `login`.`role` (`idrole`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+CREATE TABLE request (
+  idrequest INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  salt INT NOT NULL,
+  time_up INT NOT NULL,
+  logins_idlogins INT,
+  CONSTRAINT fk_logins FOREIGN KEY
+  (logins_idlogins) REFERENCES logins(idlogins),
+  UNIQUE INDEX salt_UNIQUE(salt)
+);
