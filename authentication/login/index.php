@@ -9,13 +9,13 @@
 </head>
 <body>    
     <h1>LOGIN</h1>
-    <div class="login_page">
         <form action="login_valid.php" method="POST">
                 <input type="text" name="username" placeholder="Username" required>
                 <br>
                 <input type="password" name="password" placeholder="Password" required>
                 <br>
                 <input class="sub" type="submit" name="submit" value="LOGIN"></button>
+                <p>Haven't registered yet?<a href="../index.php">CLICK HERE!</a></p>
             </form>
             <?php
             if (isset($_POST['submit'])) {
@@ -23,6 +23,5 @@
                 header('Location: ' . $_SERVER['PHP_SELF']);
                 }
             ?>
-    </div>        
 </body>
 </html>

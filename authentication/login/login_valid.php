@@ -9,7 +9,10 @@ function validation($DP, $FP, $DU, $FU){
         header("Location: profile_page.php");
     }   
     else{
-        header("Location: index.php");
+        echo "<script language='javascript'>";
+        echo 'alert("Přihlášení se nepodařilo...");';
+        echo 'window.location.replace("index.php");';
+        echo "</script>";
     }
 }
 

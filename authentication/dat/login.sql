@@ -20,3 +20,5 @@ CREATE TABLE request (
   (logins_idlogins) REFERENCES logins(idlogins),
   UNIQUE INDEX salt_UNIQUE(salt)
 );
+
+INSERT INTO logins (loginName, loginSurname, loginUsername, loginPassw, rName) VALUES ('Admin', 'Admin','4e7afebcfbae000b22c7c85e5560f89a2a0280b4', 'd0eebf7a2886bca8d6977a01411c1a6ac117f2a5', 'admin');
