@@ -20,8 +20,7 @@ function validation($DP, $FP, $DU, $FU){
 $user = sha1($_POST['username']);
 $passw = sha1(sha1($_POST['password']));
 
-$sql = "SELECT loginPassw, loginUsername FROM logins
-WHERE loginUsername =('$user');";
+$sql = "SELECT idlogins, loginPassw, loginUsername FROM logins WHERE loginUsername =('$user');";
 $result = mysqli_query($connect, $sql);
 
 while($row = mysqli_fetch_assoc($result)){
@@ -29,4 +28,10 @@ while($row = mysqli_fetch_assoc($result)){
     $dbPassw = $row['loginPassw'];
 }
 
-validation($dbPassw, $passw, $dbUsername, $user);
+$salts = "SELECT TOP 1 salt FROM request ORDER BY idrequest DESC";
+$saltr = mysqli_query($connect, $salt);
+
+while($row = mysqli_fetch_assoc($saltr)){
+    $salt = $row['salt'];
+}
+validation(hash_hmac("sha256", $dbPassw, $salt), hash_hmac("sha256", $passw, $salt), $dbUsername, $user);

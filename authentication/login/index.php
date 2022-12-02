@@ -22,6 +22,8 @@
                 include 'login_valid.php';
                 header('Location: ' . $_SERVER['PHP_SELF']);
                 }
+
+            require 'salt.php';
             ?>
 </body>
 </html>
