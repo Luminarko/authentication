@@ -9,7 +9,7 @@ function validation($DP, $FP, $DU, $FU){
         session_start();
         $_SESSION['username'] =  "$DU";
         $_SESSION['start'] = time();
-        $_SESSION['expire'] = $_SESSION['start'] + (1 * 10);
+        $_SESSION['expire'] = $_SESSION['start'] + (1 * 50);
     }   
     else{
         echo "<script language='javascript'>";
