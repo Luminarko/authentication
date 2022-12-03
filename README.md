@@ -8,4 +8,5 @@ Po přihlášení vás systém po minutě odhlásí.
 ## Register
 Pomocí **registeru** můžete založit pouze obyčejný profil. **Administrátor** lze být vytvořen pouze přepsáním role v **DB**.
 
-### Autoři mini-projektu **Zeleňák & Job**
+## Autoři
+Zeleňák & Job
