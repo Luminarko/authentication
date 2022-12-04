@@ -20,4 +20,5 @@ CREATE TABLE request (
   UNIQUE INDEX salt_UNIQUE(salt)
 );
 
+INSERT INTO logins (loginName, loginSurname, loginUsername, loginPassw, rName) VALUES ('Gustavo', 'Fring','477593bfb7d3bedc296f9fc6dbc576e42e43b4d7', '209d5fae8b2ba427d30650dd0250942af944a0c9', 'user');
 INSERT INTO logins (loginName, loginSurname, loginUsername, loginPassw, rName) VALUES ('Albert', 'Hersch','d033e22ae348aeb5660fc2140aec35850c4da997', '7b2e9f54cdff413fcde01f330af6896c3cd7e6cd', 'admin');
