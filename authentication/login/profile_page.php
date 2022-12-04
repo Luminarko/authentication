@@ -16,8 +16,6 @@
     <h2>Let's see some information about you! :)</h2>
     <?php
         include '../dat/dbh.php';
-        include '../salt/salt_select.php';
-        include '../salt/salt_delete.php';
 
 
         session_start();
@@ -48,7 +46,6 @@
         $now = time();
         if($now > $_SESSION['expire']) {
             session_destroy();
-            salt_delete($connect, $salt);
             header("Location: index.php");  
         }
         else {
