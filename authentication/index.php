@@ -19,7 +19,7 @@
             <br>
             <input type="password" name="password" placeholder="Password" id="password" required>
             <br>
-            <input class="sub" type="submit" name="submit" value="REGISTER"></button>
+            <input class="sub" type="submit" name="submit" value="REGISTER">
             <p>Are you already registered?<a href="login/index.php">CLICK HERE!</a></p>
         </form>
         
